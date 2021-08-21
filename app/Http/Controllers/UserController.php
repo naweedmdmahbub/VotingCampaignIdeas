@@ -13,7 +13,9 @@ class UserController extends Controller
     {
         $countries = Country::all();
         $states = State::all();
-        $users = User::with('country.states')->get();
-        dd($users);
+        $users = User::with('country','state')->get();
+        // dd($users);
+        
+        return view('users.index',compact('users'));
     }
 }
