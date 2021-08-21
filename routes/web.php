@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/users', 'UserController@index')->name('users.index');
+
+Route::get('/users', 'UserController@index')->name('users.index');
+Route::get('/sections/create', 'SectionController@create')->name('sections.create');

@@ -64,6 +64,14 @@
         </style>
     </head>
     <body>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">asdsadasd</div>
+            <div class="col-md-6">asdsadsadaaaaaaaa</div>
+        </div>
+    </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
