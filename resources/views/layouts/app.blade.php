@@ -14,6 +14,15 @@
                     <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="{{ route('users.index') }}">Users</a>
+                    <a class="nav-item nav-link" href="{{ route('users.index') }}">Ideas</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ideas in Groups</a>
+                        <div class="dropdown-menu">
+                            @foreach ($groups as $group)
+                                <a class="dropdown-item" href="{{ route('ideas.group',$group->id) }}">{{$group->name}}</a>
+                            @endforeach
+                        </div>
+                    </li>
                     <a class="nav-item nav-link" href="#">Pricing</a>
                     <a class="nav-item nav-link disabled" href="#">Disabled</a>
                     </div>

@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-Route::get('/users', 'UserController@index')->name('users.index');
+Route::get('/test', 'TestController@index')->name('test');
 
 Route::get('/users', 'UserController@index')->name('users.index');
-Route::get('/sections/create', 'SectionController@create')->name('sections.create');
+Route::get('/ideas', 'IdeaController@index')->name('ideas.index');
+Route::get('/ideas/{id}', 'IdeaController@group')->name('ideas.group');
+Route::get('/groups', 'GroupController@index')->name('groups.index');

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('date_of_birth')->nullable();
             $table->unsignedInteger('country_id')->nullable();
             $table->unsignedInteger('state_id')->nullable();
+            $table->string('age_group')->nullable();
             $table->timestamps();
         });
     }

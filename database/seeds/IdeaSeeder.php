@@ -13,7 +13,7 @@ class IdeaSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for($i = 0; $i < 100; $i++) {
+        for($i = 0; $i < 30; $i++) {
             $user_ids = User::all()->pluck('id');
             // dd($user_ids);
             App\Models\Idea::create([

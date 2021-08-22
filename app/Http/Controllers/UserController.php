@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Country;
-use App\Models\State;
+use App\Models\Group;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $countries = Country::all();
-        $states = State::all();
+        $groups = Group::all();
         $users = User::with('country','state')->get();
         // dd($users);
         
-        return view('users.index',compact('users'));
+        return view('users.index',compact('users','groups'));
     }
 }
