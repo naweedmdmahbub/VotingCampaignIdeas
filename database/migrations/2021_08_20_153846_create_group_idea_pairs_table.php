@@ -17,7 +17,6 @@ class CreateGroupIdeaPairsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('group_id');
             $table->string ('ideas')->nullable();
-
         });
     }
 

@@ -53,5 +53,42 @@ class DistributionSeeder extends Seeder
             }
         }
 
+        $this->pairing($distributions);
+    }
+
+
+    
+
+    public function pairing($distributions)
+    {
+        $groups = Group::all();
+        foreach($groups as $group){
+            DB::table('group_idea_pairs')->where('group_id', $group->id)->delete();
+            $ideas = Idea::with('user')->where('group_id',$group->id)->get();
+
+            $ideas =Idea::leftJoin('users', 'ideas.user_id', '=', 'users.id')
+                ->leftJoin('countries', 'users.country_id', '=', 'countries.id')
+                ->leftJoin('states', 'users.state_id', '=', 'states.id')
+                ->select('ideas.id', 'users.id as user_id', 'users.age_group as age_group', 'countries.id as country', 'states.id as state')
+                ->orderBy('country')
+                ->orderBy('state')
+                ->orderBy('age_group')
+                ->where('group_id',$group->id)
+                ->get()->toArray();
+
+            // $pairs = [];
+            $len = count($ideas);
+            for($i=0, $j=$len-1; $i*2<$len;  $i++,$j-- ){
+                // array_push($pairs,[ $ideas[$i]['id'], $ideas[$j]['id'] ]);
+                // dd($ideas,$pairs, $ideas[$i]['id'], $ideas[$j]['id']);
+                $pair_array_saving = array($ideas[$i]['id'], $ideas[$j]['id']);
+                $string=implode(",",$pair_array_saving);
+                // $data = new GroupIdeaPair();
+                $data['group_id'] = $group->id;
+                $data['ideas'] = $string;
+                $groupIdeaPair = GroupIdeaPair::create($data);
+            }
+            // dd($ideas,$pairs, GroupIdeaPair::all());
+        }
     }
 }
