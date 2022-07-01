@@ -8,4 +8,7 @@ class Group extends Model
 {
     protected $fillable = ['name'];
 
+    public function groupIdeaPairs(){
+        return $this->hasMany(GroupIdeaPair::class);
+    }
 }

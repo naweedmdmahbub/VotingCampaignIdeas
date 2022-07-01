@@ -23,3 +23,7 @@ Route::get('/users', 'UserController@index')->name('users.index');
 Route::get('/ideas', 'IdeaController@index')->name('ideas.index');
 Route::get('/ideas/{id}', 'IdeaController@group')->name('ideas.group');
 Route::get('/groups', 'GroupController@index')->name('groups.index');
+
+Route::get('/vote/{voter_id}/{group_id}', 'VoteController@voting')->name('votes.voting');
+Route::post('/vote/{voter_id}/{group_id}', 'VoteController@store')->name('votes.store');
+Route::get('/vote/show/{group_id}', 'VoteController@show')->name('votes.show');

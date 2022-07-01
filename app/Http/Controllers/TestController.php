@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Group;
-use App\Models\GroupIdeaPair;
-use App\Models\Idea;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
+
     public function index()
     {
 
@@ -33,9 +29,6 @@ class TestController extends Controller
         // }
         // $sortedArr = collect($arr)->sortBy('freq')->reverse()->toArray();
         // dd($items,$arr,$sortedArr);
-
-
-
         $ideas =Idea::leftJoin('users', 'ideas.user_id', '=', 'users.id')
             ->leftJoin('countries', 'users.country_id', '=', 'countries.id')
             ->leftJoin('states', 'users.state_id', '=', 'states.id')
@@ -46,10 +39,10 @@ class TestController extends Controller
             ->get()->toArray();
 
         $groups = Group::all();
-        
+
 
         $distributions = array();
-        
+
         foreach($groups as $group) {
             $distributions[$group->id] = array();
         }

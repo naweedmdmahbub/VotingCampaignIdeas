@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Group;
+use App\Models\GroupIdeaPair;
 use App\Models\Idea;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +21,7 @@ class DistributionSeeder extends Seeder
             ->orderBy('country')
             ->orderBy('state')
             ->orderBy('age_group')
+            ->orderBy('id')
             ->get()->toArray();
 
         $groups = Group::all();
@@ -73,6 +75,7 @@ class DistributionSeeder extends Seeder
                 ->orderBy('country')
                 ->orderBy('state')
                 ->orderBy('age_group')
+                ->orderBy('id')
                 ->where('group_id',$group->id)
                 ->get()->toArray();
 
